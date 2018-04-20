@@ -1,5 +1,6 @@
 This directory contains code to preprocess diffusion-weighted images ahead of 
-the TractEM tracing protocol.
+the TractEM tracing protocol. For a high level overview, see 
+PREPROCESSING_STEPS.txt.
 
 
 DEPENDENCIES
