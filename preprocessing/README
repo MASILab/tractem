@@ -19,7 +19,7 @@ REQUIRED DATA
 
 Images must be in Nifti format.
 
-- Diffusion weighted image series, with associated b value and 
+- Preprocessed diffusion weighted image series, with associated b value and 
   b vector files
 
 - T1-weighted MRI image
