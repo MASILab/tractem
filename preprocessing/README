@@ -1,0 +1,72 @@
+This directory contains code to preprocess diffusion-weighted images ahead of 
+the TractEM tracing protocol.
+
+
+DEPENDENCIES
+
+MATLAB, 2015 or later
+https://www.mathworks.com/products/matlab.html
+
+DSI Studio (tested with Jan 19 2018 build on OS X)
+https://github.com/frankyeh/DSI-Studio
+
+SPM12 (tested with r6225)
+http://www.fil.ion.ucl.ac.uk/spm/software/spm12/
+
+
+
+REQUIRED DATA
+
+Images must be in Nifti format.
+
+- Diffusion weighted image series, with associated b value and 
+  b vector files
+
+- T1-weighted MRI image
+
+- BrainCOLOR segmentation of the T1-weighted image
+
+- A brain mask image
+
+- Image describing the gradient coil nonlinearities, if available. E.g. 
+  "grad_dev" file from HCP datasets.
+
+
+CODE
+
+atlas
+    Creation of a Talairach-space white matter fractional anisotopy atlas to 
+	which individual subject's data will be aligned.
+
+example_calling_script_BLSA.m
+example_calling_script_HCP.m
+    Example matlab scripts to set paths and file locations. Also sets the 
+	reconstruction	method, e.g. Q-ball or GQI.
+
+get_BLSA_filenames.m
+get_HCP_filenames.m
+	Example scripts to find files for a series of subjects and apply 
+	study-specific preprocessing (e.g. BLSA data require extra masking and 
+	coregistration steps).
+
+process_subject.m
+    The main function that processes a subject's data. Aligns the brain to 
+	the Talairach space FA template and performs the DSI Studio processing 
+	stream to prepare for tractography. Also uses an existing BrainCOLOR 
+	segmentation to produce subject-specific region of interest masks for each 
+	lobe.
+
+affine_to_tal.m
+b_vec_transformation.m
+change_nan.m
+coregister_t1.m
+find_center_of_mass.m
+make_Tal.m
+make_native.m
+make_lobes/*
+restore_nii_geom.m
+shift_COM.m
+unziptest.m
+zero_exmask_dwi.m
+ziptest.m
+	Support functions for the above.

@@ -1,0 +1,30 @@
+Files:
+
+JHU-ICBM-FA-2mm.nii.gz       Atlas space FA image (see below)
+JHU-ICBM-FA-2mm-TAL.nii.gz   Same, headers updated to move to Talairach space
+rJHU-ICBM-FA-2mm-TAL.nii.gz  Same, resampled to square voxels
+transform_ICBM_to_TAL.m      Code to make the transformation
+
+The transformation code uses SPM12 functions to apply the "pooled" affine transform from Lancaster et al. 2007:
+https://www.ncbi.nlm.nih.gov/pubmed/17266101
+Lancaster JL, Tordesillas-Gutiérrez D, Martinez M, Salinas F, Evans A, Zilles 
+K, Mazziotta JC, Fox PT. Bias between MNI and Talairach coordinates analyzed
+using the ICBM-152 brain template. Hum Brain Mapp. 2007 Nov;28(11):1194-205.
+PubMed PMID: 17266101.
+
+The original image is an FA atlas from the FSL distribution:
+
+https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Atlases
+
+Mori et al., MRI Atlas of Human White Matter. Elsevier, Amsterdam, The 
+Netherlands (2005)
+
+Wakana et al., Reproducibility of quantitative tractography methods applied to 
+cerebral white matter. NeuroImage 36:630-644 (2007)
+
+Hua et al., Tract probability maps in stereotaxic spaces: analysis of white 
+matter anatomy and tract-specific quantification. NeuroImage, 39(1):336-347 
+(2008)
+
+
+
