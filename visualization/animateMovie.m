@@ -1,4 +1,4 @@
-movies = dir('movie*.mat');
+movies = dir('./movie/movie*.mat');
 movies = movies(randperm(length(movies)));
 curMovie=loadMovie(movies(1).name,[1175 1675 3]);
 
@@ -21,7 +21,7 @@ for j=1:(length(movies)-1)
     curMovie = nextMovie;    
 end
 
-v = VideoWriter('newfile2.avi','Motion JPEG AVI');
+v = VideoWriter('./movie/newfile2.avi','Motion JPEG AVI');
 v.Quality = 95;
 open(v);
 for i=1:length(movie)

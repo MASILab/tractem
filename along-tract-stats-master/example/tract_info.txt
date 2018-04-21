@@ -1,2 +1,0 @@
-Tract	Hemisphere	startPt	view	nPts
-CST	L	[NaN NaN NaN]	[90 0]	
