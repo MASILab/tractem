@@ -1,0 +1,239 @@
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/masimatlab/!svn/ver/268/trunk/xnatspiders/matlab/ext/fileformats_toolbox
+END
+updatePARfile.m
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/masimatlab/!svn/ver/268/trunk/xnatspiders/matlab/ext/fileformats_toolbox/updatePARfile.m
+END
+writeAIRfile.m
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/masimatlab/!svn/ver/268/trunk/xnatspiders/matlab/ext/fileformats_toolbox/writeAIRfile.m
+END
+savePARREC.m
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/masimatlab/!svn/ver/268/trunk/xnatspiders/matlab/ext/fileformats_toolbox/savePARREC.m
+END
+safeTex.m
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/masimatlab/!svn/ver/268/trunk/xnatspiders/matlab/ext/fileformats_toolbox/safeTex.m
+END
+computeMTR.m
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/masimatlab/!svn/ver/268/trunk/xnatspiders/matlab/ext/fileformats_toolbox/computeMTR.m
+END
+savePAR.m
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/masimatlab/!svn/ver/268/trunk/xnatspiders/matlab/ext/fileformats_toolbox/savePAR.m
+END
+writeXFM.m
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/masimatlab/!svn/ver/268/trunk/xnatspiders/matlab/ext/fileformats_toolbox/writeXFM.m
+END
+createPARFile.m
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/masimatlab/!svn/ver/268/trunk/xnatspiders/matlab/ext/fileformats_toolbox/createPARFile.m
+END
+viewPARREC.m
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/masimatlab/!svn/ver/268/trunk/xnatspiders/matlab/ext/fileformats_toolbox/viewPARREC.m
+END
+writeAVWtoPARREC.m
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/masimatlab/!svn/ver/268/trunk/xnatspiders/matlab/ext/fileformats_toolbox/writeAVWtoPARREC.m
+END
+writePARRECtoAVW.m
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/masimatlab/!svn/ver/268/trunk/xnatspiders/matlab/ext/fileformats_toolbox/writePARRECtoAVW.m
+END
+savePARRECavw.m
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/masimatlab/!svn/ver/268/trunk/xnatspiders/matlab/ext/fileformats_toolbox/savePARRECavw.m
+END
+loadREC.m
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/masimatlab/!svn/ver/268/trunk/xnatspiders/matlab/ext/fileformats_toolbox/loadREC.m
+END
+writeAVWtoPARfREC.m
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/masimatlab/!svn/ver/268/trunk/xnatspiders/matlab/ext/fileformats_toolbox/writeAVWtoPARfREC.m
+END
+loadPAR.asv
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/masimatlab/!svn/ver/268/trunk/xnatspiders/matlab/ext/fileformats_toolbox/loadPAR.asv
+END
+loadPAR.m
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/masimatlab/!svn/ver/268/trunk/xnatspiders/matlab/ext/fileformats_toolbox/loadPAR.m
+END
+default_v3.par
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/masimatlab/!svn/ver/268/trunk/xnatspiders/matlab/ext/fileformats_toolbox/default_v3.par
+END
+default_v4.par
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/masimatlab/!svn/ver/268/trunk/xnatspiders/matlab/ext/fileformats_toolbox/default_v4.par
+END
+read_cpx.m
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/masimatlab/!svn/ver/268/trunk/xnatspiders/matlab/ext/fileformats_toolbox/read_cpx.m
+END
+writePARRECtoAxialAVW.m
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/masimatlab/!svn/ver/268/trunk/xnatspiders/matlab/ext/fileformats_toolbox/writePARRECtoAxialAVW.m
+END
+savePARRECavw_forceAnatom2Axial.m
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/masimatlab/!svn/ver/268/trunk/xnatspiders/matlab/ext/fileformats_toolbox/savePARRECavw_forceAnatom2Axial.m
+END
+frec2rec.m
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/masimatlab/!svn/ver/268/trunk/xnatspiders/matlab/ext/fileformats_toolbox/frec2rec.m
+END
+saveTDF.m
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/masimatlab/!svn/ver/268/trunk/xnatspiders/matlab/ext/fileformats_toolbox/saveTDF.m
+END
+savePARfREC.m
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/masimatlab/!svn/ver/268/trunk/xnatspiders/matlab/ext/fileformats_toolbox/savePARfREC.m
+END
+writePrinceRaw.m
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/masimatlab/!svn/ver/268/trunk/xnatspiders/matlab/ext/fileformats_toolbox/writePrinceRaw.m
+END
+get_DICOM_info.m
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/masimatlab/!svn/ver/268/trunk/xnatspiders/matlab/ext/fileformats_toolbox/get_DICOM_info.m
+END
+readAIRfile.m
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/masimatlab/!svn/ver/268/trunk/xnatspiders/matlab/ext/fileformats_toolbox/readAIRfile.m
+END
+loadDPF.m
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/masimatlab/!svn/ver/268/trunk/xnatspiders/matlab/ext/fileformats_toolbox/loadDPF.m
+END
+loadPARREC.m
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/masimatlab/!svn/ver/268/trunk/xnatspiders/matlab/ext/fileformats_toolbox/loadPARREC.m
+END
+computeMean.m
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/masimatlab/!svn/ver/268/trunk/xnatspiders/matlab/ext/fileformats_toolbox/computeMean.m
+END
+loadTDF.m
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/masimatlab/!svn/ver/268/trunk/xnatspiders/matlab/ext/fileformats_toolbox/loadTDF.m
+END
+writePARfRECtoAVW.m
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/masimatlab/!svn/ver/268/trunk/xnatspiders/matlab/ext/fileformats_toolbox/writePARfRECtoAVW.m
+END
+loadPARfREC.asv
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/masimatlab/!svn/ver/268/trunk/xnatspiders/matlab/ext/fileformats_toolbox/loadPARfREC.asv
+END
+readme.txt
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/masimatlab/!svn/ver/268/trunk/xnatspiders/matlab/ext/fileformats_toolbox/readme.txt
+END
+computeAbsoluteT1.m
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/masimatlab/!svn/ver/268/trunk/xnatspiders/matlab/ext/fileformats_toolbox/computeAbsoluteT1.m
+END
+computeAbsoluteT2.m
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/masimatlab/!svn/ver/268/trunk/xnatspiders/matlab/ext/fileformats_toolbox/computeAbsoluteT2.m
+END
+loadPARfREC.m
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/masimatlab/!svn/ver/268/trunk/xnatspiders/matlab/ext/fileformats_toolbox/loadPARfREC.m
+END
+Analyze2PARREC.m
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/masimatlab/!svn/ver/268/trunk/xnatspiders/matlab/ext/fileformats_toolbox/Analyze2PARREC.m
+END
+defaultPARVars.m
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/masimatlab/!svn/ver/268/trunk/xnatspiders/matlab/ext/fileformats_toolbox/defaultPARVars.m
+END
