@@ -9,7 +9,9 @@
 % Edit the tracts variable to name the densities to add to the overlay. 
 % Run this script. 
 %
+% Version History: 
 % May 1, 2018 Bennett Landman
+
 addpath(genpath(pwd))
 structure = load_nii('./structure/wcT1w_acpc_dc_restore_1.25.nii')
 
