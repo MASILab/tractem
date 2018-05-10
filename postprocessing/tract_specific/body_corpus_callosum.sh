@@ -1,43 +1,41 @@
 #!/bin/sh
 #
 # Usage: sh body_corpus_callosum.sh /fully/qualified/path/to/fibfile.fib.gz
+#
+# Lots of assumptions being made here about how files are named and stored 
+# after the manual part of the protocol.
 
-# General init
-source ../dsi_studio_setup.sh
-FIB="${1}"
-FIBDIR=`dirname "${FIB}"`
-
-# Structure-specific
+# Structure names, long and short form
 STRUCTURE=body_corpus_callosum
 STRUCT=bcc
-SEED="${FIBDIR}"/"${STRUCTURE}"/"${STRUCT}"_seed1.nii.gz
-ROA="${FIBDIR}"/"${STRUCTURE}"/"${STRUCT}"_ROA1.nii.gz
 
-# More general init
-OUTDIR="${FIBDIR}"/postproc/"${STRUCTURE}"
+# Get DSI Studio binary location, and tractography options. Then initialize 
+# file and directory names.
+source ../dsi_studio_setup.sh
+source ../get_dir_names.sh "${1}" "${STRUCTURE}"
 
-if [ ! -e "${OUTDIR}" ] ; then
-	mkdir -p "${OUTDIR}"
-fi
-
-# Compute tracts (also structure-specific in lists of ROIs etc)
+# Compute tracts (this command line is structure-specific in terms of ROIs etc)
 $DSI_STUDIO \
 	--action=trk \
 	--source=$FIB \
-	--roa=$ROA \
-	--seed=$SEED \
+	--roa="${STRUCTDIR}"/"${STRUCT}"_ROA1.nii.gz \
+	--seed="${STRUCTDIR}"/"${STRUCT}"_seed1.nii.gz \
 	${DSI_OPTION_STRING} \
-	--output="${OUTDIR}"/"${STRUCT}".trk.gz
+	--output="${OUTDIR}"/"${STRUCT}".trk.gz \
+	> "${LOGFILE}" 2>&1
 
-# Export density map. General
+# Export density map
 $DSI_STUDIO \
 	--action=ana \
 	--source=$FIB \
 	--tract="${OUTDIR}"/"${STRUCT}".trk.gz \
 	--export=tdi \
-	--output="${OUTDIR}"/"${STRUCT}".trk.gz
+	--output="${OUTDIR}"/"${STRUCT}".trk.gz \
+	>> "${LOGFILE}" 2>&1
 
-# Give the density map output a clearer filename. General
+# Give the density map output a clearer filename
 mv "${OUTDIR}"/"${STRUCT}".trk.gz.tdi.nii.gz \
-	"${OUTDIR}"/"${STRUCT}"_density_tdi.nii.gz
+	"${OUTDIR}"/"${STRUCT}"_density_tdi.nii.gz \
+	>> "${LOGFILE}" 2>&1
+
 
