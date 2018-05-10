@@ -14,28 +14,19 @@ STRUCT=bcc
 source ../dsi_studio_setup.sh
 source ../get_dir_names.sh "${1}" "${STRUCTURE}"
 
-# Compute tracts (this command line is structure-specific in terms of ROIs etc)
+# Compute tracts and export density map. This command line is structure-specific in terms of ROIs etc.
 $DSI_STUDIO \
 	--action=trk \
 	--source=$FIB \
 	--roa="${STRUCTDIR}"/"${STRUCT}"_ROA1.nii.gz \
 	--seed="${STRUCTDIR}"/"${STRUCT}"_seed1.nii.gz \
 	${DSI_OPTION_STRING} \
-	--output="${OUTDIR}"/"${STRUCT}".trk.gz \
+	--output="${OUTDIR}"/"${STRUCT}"_tract.trk.gz \
+	--export=tdi \
 	> "${LOGFILE}" 2>&1
 
-# Export density map
-$DSI_STUDIO \
-	--action=ana \
-	--source=$FIB \
-	--tract="${OUTDIR}"/"${STRUCT}".trk.gz \
-	--export=tdi \
-	--output="${OUTDIR}"/"${STRUCT}".trk.gz \
-	>> "${LOGFILE}" 2>&1
-
 # Give the density map output a clearer filename
-mv "${OUTDIR}"/"${STRUCT}".trk.gz.tdi.nii.gz \
-	"${OUTDIR}"/"${STRUCT}"_density_tdi.nii.gz \
+mv "${OUTDIR}"/"${STRUCT}"_tract.trk.gz.tdi.nii.gz \
+	"${OUTDIR}"/"${STRUCT}"_density.nii.gz \
 	>> "${LOGFILE}" 2>&1
-
 

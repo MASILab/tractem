@@ -24,12 +24,12 @@ for H in L R ; do
 		--roi="${STRUCTDIR}"/"${STRUCT}"_${H}_ROI1.nii.gz \
 		--seed="${STRUCTDIR}"/"${STRUCT}"_${H}_seed1.nii.gz \
 		${DSI_OPTION_STRING} \
-		--output="${OUTDIR}"/"${STRUCT}"_${H}.trk.gz \
+		--output="${OUTDIR}"/"${STRUCT}"_${H}_tract.trk.gz \
 		--export=tdi \
 		> "${LOGFILE}" 2>&1
 
-	mv "${OUTDIR}"/"${STRUCT}"_${H}.trk.gz.tdi.nii.gz \
-		"${OUTDIR}"/"${STRUCT}"_${H}_density_tdi.nii.gz \
+	mv "${OUTDIR}"/"${STRUCT}"_${H}_tract.trk.gz.tdi.nii.gz \
+		"${OUTDIR}"/"${STRUCT}"_${H}_density.nii.gz \
 		>> "${LOGFILE}" 2>&1
 
 done

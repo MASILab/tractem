@@ -28,13 +28,13 @@ $DSI_STUDIO \
 	--roa="${STRUCTDIR}"/"${STRUCT}"_ROA1.nii.gz \
 	--seed="${SEED}" \
 	${DSI_OPTION_STRING} \
-	--output="${OUTDIR}"/"${STRUCT}".trk.gz \
+	--output="${OUTDIR}"/"${STRUCT}"_tract.trk.gz \
 	--export=tdi \
 	> "${LOGFILE}" 2>&1
 
 # Give the density map output a clearer filename
-mv "${OUTDIR}"/"${STRUCT}".trk.gz.tdi.nii.gz \
-	"${OUTDIR}"/"${STRUCT}"_density_tdi.nii.gz \
+mv "${OUTDIR}"/"${STRUCT}"_tract.trk.gz.tdi.nii.gz \
+	"${OUTDIR}"/"${STRUCT}"_density.nii.gz \
 	>> "${LOGFILE}" 2>&1
 
 
