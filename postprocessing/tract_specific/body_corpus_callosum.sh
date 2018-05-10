@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# Usage: sh body_corpus_callosum.sh <fib_file_with_fully_qualified_pathspec>
+# Usage: sh body_corpus_callosum.sh /fully/qualified/path/to/fibfile.fib.gz
 
 # General init
 source ../dsi_studio_setup.sh
