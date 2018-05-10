@@ -19,7 +19,7 @@ STRUCT="${3}"
 source ../dsi_studio_setup.sh
 source ../get_dir_names.sh "${1}" "${STRUCTURE}"
 
-# Compute tracts and export density map. This command line is structure-specific in terms of ROIs etc.
+# Compute tracts and export density map
 if [ -e "${LOGFILE}" ] ; then rm "${LOGFILE}" ; fi
 for H in L R ; do
 

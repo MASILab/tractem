@@ -19,14 +19,13 @@ STRUCT="${3}"
 source ../dsi_studio_setup.sh
 source ../get_dir_names.sh "${1}" "${STRUCTURE}"
 
-# For a few tracts, e.g. anterior commissure, we need to combine multiple seed 
-# images
+# Combine multiple seed images
 SEED="${OUTDIR}"/"${STRUCT}"_LR_seed.nii.gz
 fslmaths "${STRUCTDIR}"/"${STRUCT}"_L_seed1.nii.gz \
 	-add "${STRUCTDIR}"/"${STRUCT}"_R_seed1.nii.gz \
 	-bin "${SEED}"
 
-# Compute tracts and export density map. This command line is structure-specific in terms of ROIs etc.
+# Compute tracts and export density map
 $DSI_STUDIO \
 	--action=trk \
 	--source=$FIB \
