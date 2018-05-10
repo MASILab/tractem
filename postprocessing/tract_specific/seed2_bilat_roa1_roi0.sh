@@ -23,7 +23,8 @@ source ../get_dir_names.sh "${1}" "${STRUCTURE}"
 SEED="${OUTDIR}"/"${STRUCT}"_LR_seed.nii.gz
 fslmaths "${STRUCTDIR}"/"${STRUCT}"_L_seed1.nii.gz \
 	-add "${STRUCTDIR}"/"${STRUCT}"_R_seed1.nii.gz \
-	-bin "${SEED}"
+	-bin "${SEED}" \
+	> "${LOGFILE}" 2>&1
 
 # Compute tracts and export density map
 $DSI_STUDIO \
@@ -34,7 +35,7 @@ $DSI_STUDIO \
 	${DSI_OPTION_STRING} \
 	--output="${OUTDIR}"/"${STRUCT}"_tract.trk.gz \
 	--export=tdi \
-	> "${LOGFILE}" 2>&1
+	>> "${LOGFILE}" 2>&1
 
 # Give the density map output a clearer filename
 mv "${OUTDIR}"/"${STRUCT}"_tract.trk.gz.tdi.nii.gz \
