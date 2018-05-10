@@ -1,14 +1,9 @@
 #!/bin/sh
 #
-# Usage: sh seed1_LR_roa1_roi0.sh /path/to/fib.gz anterior_corona_radiata acr
+# Usage: sh <script> /path/to/fib.gz cingulum_hippocampal cgh
 #
 # Lots of assumptions being made here about how files are named and stored 
 # after the manual part of the protocol.
-
-# seed1: single seed
-# LR: hemispheres treated separately
-# roa1: single ROA
-# roi0: No ROIs
 
 # Structure names, long and short form from command line
 STRUCTURE="${2}"
@@ -26,6 +21,7 @@ for H in L R ; do
 	$DSI_STUDIO \
 		--action=trk \
 		--source=$FIB \
+		--roi="${STRUCTDIR}"/"${STRUCT}"_${H}_ROI1.nii.gz \
 		--roa="${STRUCTDIR}"/"${STRUCT}"_ROA1.nii.gz \
 		--seed="${STRUCTDIR}"/"${STRUCT}"_${H}_seed1.nii.gz \
 		${DSI_OPTION_STRING} \

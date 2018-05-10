@@ -35,7 +35,7 @@ sh seed1_LR_roa1s_roi2.sh "${FIB}"       inferior_fronto_occipital_fasciculus if
 sh seed1_LR_roa1s_roi2.sh "${FIB}"       inferior_longitudinal_fasciculus ilf
 
 # Left and right tracts, 1 seed each, single shared ROI, single shared ROA
-sh seed1_LR_roa1s_roi1s.sh "${FIB}"      fornix fh
+sh seed1_LR_roa1s_roi1s.sh "${FIB}"      fornix fx
 
 # Left and right tracts, 1 seed each, 1 ROA each, 2 ends each
 sh seed1_LR_roa1_roi0_end2.sh "${FIB}"   frontal_lobe fl
@@ -50,6 +50,7 @@ sh seed2_LR_roa1s_roi0.sh "${FIB}"       cingulum_cingulate_gyrus cgc
 sh seed2_LR_roa1s_roi0.sh "${FIB}"       optic_tract opt
 
 # Left and right tracts, 2 seeds each, 1 ROI each, single shared ROA
+# FIXME Something wrong here. Options not picked up correctly, seed file not found (but is present after), trk file saved in wrong place, no density image
 sh seed2_LR_roa1s_roi1.sh "${FIB}"       posterior_thalamic_radiation ptr
 
 # Single bilateral tract, 1 seed, 1 ROA
