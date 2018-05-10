@@ -5,6 +5,10 @@
 Please see the ***preprocessing*** folder for source code related to transforming 
 DW-MRI data into Talairach space. 
 
+## Postprocessing
+
+Please see the ***postprocessing*** folder for source code related to computing tracts and tract density images from the manually created seed and exclusion regions described in the protocol.
+
 ## Visualization 
 
 Please see ***visualization*** for miscellaneous utilities for rendering the data from this study. Notably: 
