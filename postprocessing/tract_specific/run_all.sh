@@ -59,6 +59,7 @@ sh seed1_bilat_roa1_roi0.sh "${FIB}"     splenium_corpus_callosum scc
 sh seed2_bilat_roa1_roi0.sh "${FIB}"     anterior_commissure ac
 sh seed2_bilat_roa1_roi0.sh "${FIB}"     middle_cerebellar_peduncle mcp
 sh seed2_bilat_roa1_roi0.sh "${FIB}"     tapetum_corpus_callosum tap
-sh seed2_bilat_roa1_roi0.sh "${FIB}"     superior_cerebellar_peduncle scp
 sh seed2_bilat_roa1_roi0.sh "${FIB}"     optic_tract opt
 
+# Single bilateral tract, 2 seeds, 1 ROA, 2 ROIs
+sh seed2_bilat_roa1_roi2.sh "${FIB}"     superior_cerebellar_peduncle scp
