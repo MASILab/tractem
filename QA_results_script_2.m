@@ -2,12 +2,20 @@ clc
 clear all
 close all
 
+% Adjust these variables with each subject
+subjectID = '165436'; 
+rater = 'Roza'; 
+project = 'HCP';
+
+% Add the NIfTI_20140122 and MATLAB/along-tract-stats packagaes
 addpath('/Users/greerjm1/Documents/MATLAB/NIfTI_20140122/')
 addpath('/Users/greerjm1/Documents/MATLAB/along-tract-stats')
-addpath('/Users/greerjm1/Documents/workingcode/imoverlay/')
 
-% D = '/Users/greerjm1/Dropbox (VUMC)/whole_brain_regions_set2_165436/density/';
-D = '/Volumes/Data/Dropbox (VUMC)/tractography/complete_HCP_subjects/135124_Yufei/postproc/';
+% The location of the subject data
+D = ['/Volumes/Data/Dropbox (VUMC)/tractography/complete_' project '_subjects'];
+D = [D filesep subjectID '_' rater '/']; 
+
+% Isolate just the tract directories
 files = dir(D);
 filenames = cellstr(char(files.name));
 dropfiles = false(length(files),1);
@@ -15,36 +23,49 @@ dropfiles(ismember(filenames,{'.','..','.DS_Store','README.rtf', 'README.txt', '
 dropfiles(~cellfun(@isempty,strfind(filenames,'tal_fib.gz'))) = true;
 files = files(~dropfiles);
 
-% background = '/Volumes/Data/WM_Subjects/165436/T1w/Diffusion/wwCOM_dwi.nii.gz';
-% system(['gunzip "' background '"']);
-% basevol = load_nii(background(1:end-3));
-% basevol = basevol.img(:,:,:,1); % use just first volume
-% system(['gzip "' background(1:end-3) '"']);
+% The HCP and BLSA subjects were processed differently and have a different
+% qa volume name
+if project == 'HCP'
+    background = [D subjectID '_gqi_fib_qa.nii.gz'];
+elseif project == 'BLSA'
+    background = [D ubjectID '_tal_fib_qa.nii.gz'];
+else
+    fprint('Error')
+end
 
-background = '/Volumes/Data/Dropbox (VUMC)/tractography/complete_HCP_subjects/135124_Yufei/135124_gqi_fib_qa.nii.gz';
-% background = [D '5708_tal_fib_qa.nii.gz'];
+% Load the FA image. This will be the background image for the density maps
 basevol = load_nii(background);
 basevol = basevol.img(:,:,:,1); % use just first volume
 
+% Put all of the PDF results into a directory called QA. If QA does not
+% already exist, create the directory
 if any(strcmp({files.name}, 'QA'))==0
     mkdir( [D '/' 'QA'])
 end
 
 %%
+
+% This for loop reviews each tract directory
 for j=1:length(files)
     
+    % Confirm that the file list are directories
     if ~files(j).isdir, continue, end
     
+    % Identify density files
     alldens = dir([D  files(j).name filesep '*_density.nii.gz']);
+    % Identify tract files
     alltrk = dir([D  files(j).name filesep '*_tract.trk.gz']);
     
+    % This for loop review each density file: left and right
     for d = 1:length(alldens)
         
+        % Define density file. Unzip it. Load density files. Then zip it back up 
         density =  [D  files(j).name '/' alldens(d).name];
         system(['gunzip "' density '"']);
         vol = load_nii(density(1:end-3));
         system(['gzip "' density(1:end-3) '"']);
         
+        % Define tract file. Unzip it. Load tract files. Then zip it back up 
         trk_file = [density(1:end-14) 'tract.trk.gz'];
         [~,trkn] = fileparts(trk_file);
         trkn = strrep(trkn,'_tract.trk','');
@@ -54,6 +75,8 @@ for j=1:length(files)
         p = get(gcf,'Position');
         p(3:4) = [700 700];
         set(gcf,'Position',p);
+        
+        % Overlap the background FA image and the density map on an axial plane
         subplot(2,2,1)
         overlay = squeeze(sum(vol.img,3));
         baseimg = squeeze(basevol(:,:,floor(end/2)));
@@ -64,7 +87,7 @@ for j=1:length(files)
         imagesc(rgb)
         title(trk_name, 'Interpreter', 'none')
         
-        
+        % Overlap the background FA image and the density map on a coronal plane
         subplot(2,2,2)
         overlay = squeeze(sum(vol.img,2));
         baseimg = squeeze(basevol(:,floor(end/2),:));
@@ -74,7 +97,7 @@ for j=1:length(files)
         rgb(:,:,1) = min(1,baseimg/(max(baseimg(:))-min(baseimg(:)))+overlay/max(overlay(:)));
         imagesc(imrotate(rgb, 90))
         
-        
+        % Overlap the background FA image and the density map on a saggital plane
         subplot(2,2,3)
         overlay = squeeze(sum(vol.img,1));
         baseimg = squeeze(basevol(floor(end/2),:,:));
@@ -87,6 +110,7 @@ for j=1:length(files)
         drawnow
         %pause(.01);
         
+        % Show the tract file in 3D
         subplot(2,2,4)
         system(['cat "' trk_file '" | gzip -d > foo.trk'])
         [header, tracks] = trk_read('foo.trk');
