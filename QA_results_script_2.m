@@ -3,8 +3,8 @@ clear all
 close all
 
 % Adjust these variables with each subject
-subjectID = '165436'; 
-rater = 'Roza'; 
+subjectID = '878877'; 
+rater = 'Xuan'; 
 project = 'HCP';
 
 % Add the NIfTI_20140122 and MATLAB/along-tract-stats packagaes
@@ -28,7 +28,7 @@ files = files(~dropfiles);
 if project == 'HCP'
     background = [D subjectID '_gqi_fib_qa.nii.gz'];
 elseif project == 'BLSA'
-    background = [D ubjectID '_tal_fib_qa.nii.gz'];
+    background = [D subjectID '_tal_fib_qa.nii.gz'];
 else
     fprint('Error')
 end
