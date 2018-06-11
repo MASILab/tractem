@@ -22,6 +22,7 @@ fi
 # Move existing ROA files to subdirectory
 mkdir original_ROAs
 mv "${STRUCT}"_?_ROA?.nii.gz original_ROAs
+sleep 2
 
 # Combine all ROA files, L and R
 fslmerge -t \
