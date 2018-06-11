@@ -22,7 +22,7 @@ fi
 # Move existing ROA files to subdirectory
 mkdir original_ROAs
 mv "${STRUCT}"_ROA?.nii.gz original_ROAs
-sleep 2
+sleep 5
 
 # Combine all ROA files
 ls original_ROAs/"${STRUCT}"_ROA?.nii.gz
