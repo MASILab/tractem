@@ -10,17 +10,24 @@ STRUCT="${2}"
 source combine_setup.sh
 
 # Get to our directory
+echo "${STRUCTDIR}"
 cd "${STRUCTDIR}"
 
-# Bail if the proposed output <struct>_ROA.nii.gz already exists
-OUTROA="${STRUCT}"_ROA.nii.gz
-if [ -e "${OUTROA}" ]
-	echo 'WARNING - skipping because of existing file "${OUTROA}" in "${STRUCTDIR}"'
+# Skip if there's no ROA2 file
+if [ ! -f "${STRUCT}"_ROA2.nii.gz ] ; then
+	echo "     - SKIPPING because no ROA2 file in ${STRUCTDIR}"
 	exit 0
 fi
 
-# Combine all ROA files
-fslmerge -t "${OUTROA}" "${STRUCT}"_ROA?.nii.gz
+# Move existing ROA files to subdirectory
+mkdir original_ROAs
+mv "${STRUCT}"_ROA?.nii.gz original_ROAs
 
-# Return
-cd -
+# Combine all ROA files
+ls original_ROAs/"${STRUCT}"_ROA?.nii.gz
+fslmerge -t \
+	mergetmp.nii.gz \
+	original_ROAs/"${STRUCT}"_ROA?.nii.gz
+fslmaths mergetmp.nii.gz -Tmax -bin "${STRUCT}"_ROA1.nii.gz
+rm mergetmp.nii.gz
+

@@ -21,7 +21,7 @@ sh combine_HCP_ROAs_bilat.sh "${SDIR}"/superior_corona_radiata scr
 sh combine_HCP_ROAs_bilat.sh "${SDIR}"/superior_longitudinal_fasciculus slf
 sh combine_HCP_ROAs_bilat.sh "${SDIR}"/uncinate_fasciculus unc
 sh combine_HCP_ROAs_bilat.sh "${SDIR}"/corticospinal_tract cst
-sh combine_HCP_ROAs_bilat.sh "${SDIR}"/fornix_stra_terminalis fxst
+sh combine_HCP_ROAs_bilat.sh "${SDIR}"/fornix_stria_terminalis fxst
 sh combine_HCP_ROAs_bilat.sh "${SDIR}"/inferior_cerebellar_peduncle icp
 sh combine_HCP_ROAs_bilat.sh "${SDIR}"/pontine_crossing_tract pct
 sh combine_HCP_ROAs_bilat.sh "${SDIR}"/superior_fronto_occipital_fasciculus sfo

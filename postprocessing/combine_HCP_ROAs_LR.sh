@@ -13,26 +13,25 @@ source combine_setup.sh
 echo "${STRUCTDIR}"
 cd "${STRUCTDIR}"
 
-# Bail if the proposed output <struct>_ROA.nii.gz already exists
-OUTROA="${STRUCT}"_L_ROA.nii.gz
-if [ -f "${OUTROA}" ] ; then
-	echo "WARNING - skipping because of existing file ${OUTROA} in ${STRUCTDIR}"
+# Skip if there's no ROA2 file
+if [ ! -f "${STRUCT}"_L_ROA2.nii.gz ] ; then
+	echo "     - SKIPPING because no L_ROA2 file in ${STRUCTDIR}"
 	exit 0
 fi
 
-# Combine all ROA files
-#fslmerge -t "${OUTROA}" "${STRUCT}"_L_ROA?.nii.gz
-fslmerge -t mergetmp.nii.gz "${STRUCT}"_L_ROA?.nii.gz
-fslmaths mergetmp.nii.gz -Tmax "${OUTROA}"
+# Move existing ROA files to subdirectory
+mkdir original_ROAs
+mv "${STRUCT}"_?_ROA?.nii.gz original_ROAs
+
+# Combine all ROA files, L and R
+fslmerge -t \
+	mergetmp.nii.gz \
+	original_ROAs/"${STRUCT}"_L_ROA?.nii.gz
+fslmaths mergetmp.nii.gz -Tmax -bin "${STRUCT}"_L_ROA1.nii.gz
 rm mergetmp.nii.gz
 
-# Repeat for R hemisphere
-OUTROA="${STRUCT}"_R_ROA.nii.gz
-if [ -f "${OUTROA}" ] ; then
-	echo "WARNING - skipping because of existing file ${OUTROA} in ${STRUCTDIR}"
-	exit 0
-fi
-fslmerge -t mergetmp.nii.gz "${STRUCT}"_R_ROA?.nii.gz
-fslmaths mergetmp.nii.gz -Tmax "${OUTROA}"
+fslmerge -t \
+	mergetmp.nii.gz \
+	original_ROAs/"${STRUCT}"_R_ROA?.nii.gz
+fslmaths mergetmp.nii.gz -Tmax -bin "${STRUCT}"_R_ROA1.nii.gz
 rm mergetmp.nii.gz
-

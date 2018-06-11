@@ -22,7 +22,7 @@ sh seed1_LR_roa1s_roi0.sh "${FIB}"       uncinate_fasciculus unc
 
 # Left and right tracts, 1 seed each, 1 ROI each, single shared ROA
 sh seed1_LR_roa1s_roi1.sh "${FIB}"       corticospinal_tract cst
-sh seed1_LR_roa1s_roi1.sh "${FIB}"       fornix_stra_terminalis fxst
+sh seed1_LR_roa1s_roi1.sh "${FIB}"       fornix_stria_terminalis fxst
 sh seed1_LR_roa1s_roi1.sh "${FIB}"       inferior_cerebellar_peduncle icp
 sh seed1_LR_roa1s_roi1.sh "${FIB}"       pontine_crossing_tract pct
 sh seed1_LR_roa1s_roi1.sh "${FIB}"       superior_fronto_occipital_fasciculus sfo
