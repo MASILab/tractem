@@ -3,11 +3,11 @@
 # Some HCP cases have multiple ROAs that need to be combined.
 
 # Structure directory and structure short name from command line
-STRUCTDIR="${2}"
-STRUCT="${3}"
+STRUCTDIR="${1}"
+STRUCT="${2}"
 
 # Get FSL setup
-source ../combine_setup.sh
+source combine_setup.sh
 
 # Get to our directory
 cd "${STRUCTDIR}"
