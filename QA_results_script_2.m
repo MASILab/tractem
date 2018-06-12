@@ -3,9 +3,9 @@ clear all
 close all
 
 % Adjust these variables with each subject
-subjectID = '878877'; 
-rater = 'Xuan'; 
-project = 'HCP';
+subjectID = '1881'; 
+rater = 'Yi'; 
+project = 'BLSA';
 
 % Add the NIfTI_20140122 and MATLAB/along-tract-stats packagaes
 addpath('/Users/greerjm1/Documents/MATLAB/NIfTI_20140122/')
@@ -25,12 +25,12 @@ files = files(~dropfiles);
 
 % The HCP and BLSA subjects were processed differently and have a different
 % qa volume name
-if project == 'HCP'
+if strcmp(project, 'HCP')
     background = [D subjectID '_gqi_fib_qa.nii.gz'];
-elseif project == 'BLSA'
+elseif strcmp(project,'BLSA')
     background = [D subjectID '_tal_fib_qa.nii.gz'];
 else
-    fprint('Error')
+    fprintf('Error')
 end
 
 % Load the FA image. This will be the background image for the density maps
@@ -46,7 +46,8 @@ end
 %%
 
 % This for loop reviews each tract directory
-for j=1:length(files)
+for j = 1:length(files)
+    
     
     % Confirm that the file list are directories
     if ~files(j).isdir, continue, end
@@ -71,11 +72,11 @@ for j=1:length(files)
         trkn = strrep(trkn,'_tract.trk','');
         trk_name = [files(j).name ' ' trkn];
         
-        figure
+        figure 
         p = get(gcf,'Position');
         p(3:4) = [700 700];
         set(gcf,'Position',p);
-        
+                
         % Overlap the background FA image and the density map on an axial plane
         subplot(2,2,1)
         overlay = squeeze(sum(vol.img,3));
@@ -96,6 +97,7 @@ for j=1:length(files)
         baseimg = baseimg/(max(baseimg(:))-min(baseimg(:)))+overlay/max(overlay(:));
         rgb(:,:,1) = min(1,baseimg/(max(baseimg(:))-min(baseimg(:)))+overlay/max(overlay(:)));
         imagesc(imrotate(rgb, 90))
+        title([subjectID '_' rater], 'Interpreter', 'none')
         
         % Overlap the background FA image and the density map on a saggital plane
         subplot(2,2,3)
@@ -106,10 +108,10 @@ for j=1:length(files)
         baseimg = baseimg/(max(baseimg(:))-min(baseimg(:)))+overlay/max(overlay(:));
         rgb(:,:,1) = min(1,baseimg/(max(baseimg(:))-min(baseimg(:)))+overlay/max(overlay(:)));
         imagesc(imrotate(rgb, 90))
-        
+                     
         drawnow
         %pause(.01);
-        
+                 
         % Show the tract file in 3D
         subplot(2,2,4)
         system(['cat "' trk_file '" | gzip -d > foo.trk'])
@@ -128,7 +130,7 @@ for j=1:length(files)
             view(60,-30)
         end
         
-        print(gcf, '-bestfit','-dpdf',  [D 'QA' filesep alldens(d).name(1:end-15)])
+        print(gcf, '-bestfit', '-dpdf',  [D 'QA' filesep alldens(d).name(1:end-15)])
         
         drawnow
         
