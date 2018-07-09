@@ -3,17 +3,18 @@ clear all
 close all
 
 % Adjust these variables with each subject
-subjectID = '1881'; 
-rater = 'Yi'; 
-project = 'BLSA';
+subjectID_rater = '7822_Christa';
 
 % Add the NIfTI_20140122 and MATLAB/along-tract-stats packagaes
 addpath('/Users/greerjm1/Documents/MATLAB/NIfTI_20140122/')
 addpath('/Users/greerjm1/Documents/MATLAB/along-tract-stats')
 
 % The location of the subject data
-D = ['/Volumes/Data/Dropbox (VUMC)/tractography/complete_' project '_subjects'];
-D = [D filesep subjectID '_' rater '/']; 
+D = ['/Volumes/Data/Dropbox (VUMC)/tractography/19_new_BLSA'];
+D = [D filesep subjectID_rater '/']; 
+
+% The location of the subject FA image. This will be the background image for the density maps
+background = [D subjectID_rater(1:4) '_tal_fib_qa.nii.gz'];
 
 % Isolate just the tract directories
 files = dir(D);
@@ -23,17 +24,7 @@ dropfiles(ismember(filenames,{'.','..','.DS_Store','README.rtf', 'README.txt', '
 dropfiles(~cellfun(@isempty,strfind(filenames,'tal_fib.gz'))) = true;
 files = files(~dropfiles);
 
-% The HCP and BLSA subjects were processed differently and have a different
-% qa volume name
-if strcmp(project, 'HCP')
-    background = [D subjectID '_gqi_fib_qa.nii.gz'];
-elseif strcmp(project,'BLSA')
-    background = [D subjectID '_tal_fib_qa.nii.gz'];
-else
-    fprintf('Error')
-end
-
-% Load the FA image. This will be the background image for the density maps
+% Load the FA image. 
 basevol = load_nii(background);
 basevol = basevol.img(:,:,:,1); % use just first volume
 
@@ -97,7 +88,7 @@ for j = 1:length(files)
         baseimg = baseimg/(max(baseimg(:))-min(baseimg(:)))+overlay/max(overlay(:));
         rgb(:,:,1) = min(1,baseimg/(max(baseimg(:))-min(baseimg(:)))+overlay/max(overlay(:)));
         imagesc(imrotate(rgb, 90))
-        title([subjectID '_' rater], 'Interpreter', 'none')
+        title([subjectID_rater], 'Interpreter', 'none')
         
         % Overlap the background FA image and the density map on a saggital plane
         subplot(2,2,3)
@@ -122,15 +113,20 @@ for j = 1:length(files)
             
             hold on;
             tracks_subset = tracks(randperm(length(tracks)));
+            if ~(length(tracks_subset) < 5000)
             tracks_subset = tracks_subset(1:5000);
             tic
             trk_plot(header,tracks_subset)
             toc
             title(trk_name, 'Interpreter', 'none');
             view(60,-30)
+            print(gcf, '-bestfit', '-dpdf',  [D 'QA' filesep alldens(d).name(1:end-15)])
+            else
+                % If the tract has less than 5000 streamline tracts, print the PDF without the tract image
+                print(gcf, '-bestfit', '-dpdf',  [D 'QA' filesep alldens(d).name(1:end-15)])
+            end
+            
         end
-        
-        print(gcf, '-bestfit', '-dpdf',  [D 'QA' filesep alldens(d).name(1:end-15)])
         
         drawnow
         
