@@ -3,7 +3,7 @@ clear all
 close all
 
 % Adjust these variables with each subject
-subjectID_rater = '7822_Christa';
+subjectID_rater = '7822_Rater';
 
 % Add the NIfTI_20140122 and MATLAB/along-tract-stats packagaes
 addpath('/Users/greerjm1/Documents/MATLAB/NIfTI_20140122/')
