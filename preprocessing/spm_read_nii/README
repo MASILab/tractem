@@ -1,0 +1,44 @@
+
+This is the 1% of the SPM12 r6225 code that is needed to read and write data and 
+geometry from Nifti files.
+
+SPM12 info: http://www.fil.ion.ucl.ac.uk/spm/software/spm12/
+
+SPM12 license: See LICENCE.txt
+
+Included bits:
+     spm_vol.m
+        spm_fileparts.m
+        spm_existfile.m*
+        spm_unlink.m*
+        spm_vol_nifti.m
+        @nifti/*
+	@file_array/*
+     spm_read_vols.m
+        spm_check_orientations.m
+           spm_mesh_detect.m
+        spm_slice_vol.m*
+        spm_matrix.m
+        spm_type.m
+     spm_write_vol.m
+        spm_create_vol.m
+	   spm_file.m
+	spm_write_plane.m
+
+
+Usage (also see help text for spm_vol and spm_read_vols):
+
+>>  V = spm_vol(<files>);
+>>  [Y,XYZ] = spm_read_vols(V);
+
+V contains information about the Nifti file(s) in an SPM-specific format.
+Y contains image data.
+XYZ contains world space coordinates in mm.
+
+
+To write a data matrix Y, update an existing V with new filenames, 
+or create V from scratch, and
+
+>> spm_write_vol(V,Y);
+
+

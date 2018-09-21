@@ -4,11 +4,6 @@ sn = load(snmat);
 bvecs = load(bvec);
 bvals = load(bval);
 
-% Affine from template - apply and re-normalize. THIS IS THE WRONG MATRIX
-%affine3by3 = sn.Affine(1:3,1:3);
-%tal_bvecs(:,k) = affine3by3 * bvecs(:,k);
-
-
 % Compute the actual affine transform by appropriately combining the
 % voxel-to-mm matrices of the two images and the sn.Affine matrix
 %
@@ -23,10 +18,17 @@ bvals = load(bval);
 %   inv(Affine)*inv(VFmat) = inv(VG(1).mat)*M ;
 %   VG.mat*inv(Affine)*inv(VF.mat) = M;
 %   VG.mat/Affine/VF.mat = M;
+%
+% But if the norm of the bvec is zero, just set the output to zero (used to
+% indicate a non-diffusion weighted image)
 M = sn.VG.mat / sn.Affine / sn.VF.mat;
 for k=1:length(bvecs)
 	tal_bvecs(:,k) = M(1:3,1:3) * bvecs(:,k);
-	tal_bvecs(:,k) = tal_bvecs(:,k) ./ norm(tal_bvecs(:,k));
+	if norm(tal_bvecs(:,k)) ~= 0
+		tal_bvecs(:,k) = tal_bvecs(:,k) ./ norm(tal_bvecs(:,k));
+	else
+		tal_bvecs(:,k) = tal_bvecs(:,k);
+	end
 end
 
 % Must follow format: bvalue, bx, by, bz
