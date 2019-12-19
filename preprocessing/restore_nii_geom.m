@@ -1,4 +1,4 @@
-function dti_fa0 = restore_nii_geom_general(mask,dti_fa0)
+function dti_fa0 = restore_nii_geom(mask,dti_fa0)
 
 % Restore correct geometry to FA image after DSI studio mangles it.
 Vmask = spm_vol(mask);
